@@ -799,20 +799,6 @@ end
 --     Source Engineer2     --
 function absmoned(chat_id, user_id, msg_id, text, offset, length) local tt = DevAbs:get(Engineer2..'endmsg') or '' tdcli_function ({ ID = "SendMessage", chat_id_ = chat_id, reply_to_message_id_ = msg_id, disable_notification_ = 0, from_background_ = 1, reply_markup_ = nil, input_message_content_ = { ID = "InputMessageText", text_ = text..'\n\n'..tt, disable_web_page_preview_ = 1, clear_draft_ = 0, entities_ = {[0]={ ID="MessageEntityMentionName", offset_=offset, length_=length, user_id_=user_id }, }, }, }, dl_cb, nil) end
 --     Source Engineer2     --
-function SourceCh(msg) 
-local url,res = https.request('https://apiabs.ml/SourceCh.php?id='..msg.sender_user_id_)
-data = JSON.decode(url)
-if data.ChatMember.Engineer2 ~= true then
-Var = false
-keyboard = {} 
-keyboard.inline_keyboard = {{{text=data.ChatMember.Title,url=data.ChatMember.Url}}} 
-Msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(data.ChatMember.Engineer2).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-Var = true
-end
-return Var
-end
 function ChCheck(msg)
 local var = true 
 if DevAbs:get(Engineer2.."Abs:ChId") then
@@ -3341,7 +3327,7 @@ end
 if text ==  'حذف رسائلي' and ChCheck(msg) or text ==  'مسح رسائلي' and ChCheck(msg) then DevAbs:del(Engineer2..'Abs:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم حذف جميع رسائلك', 1, 'md') end
 if text ==  'حذف نقاطي' and ChCheck(msg) or text ==  'مسح نقاطي' and ChCheck(msg) then DevAbs:del(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم حذف جميع نقاطك', 1, 'md') end
 --     Source Engineer2     --
-if text == 'سمايلات' and SourceCh(msg) or text == 'السمايلات' and SourceCh(msg) then
+if text == 'سمايلات' and ChCheck(msg) or text == 'السمايلات' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🏆','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🛎','📤','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔️','🛡','🔮','🌡','💣','⏱','🛢','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3475,7 +3461,7 @@ DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end
-if text == 'ترتيب' and SourceCh(msg) or text == 'الترتيب' and SourceCh(msg) then
+if text == 'ترتيب' and ChCheck(msg) or text == 'الترتيب' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'سحور','سياره','استقبال','قنفه','ايفون','بزونه','مطبخ','كرستيانو','دجاجه','مدرسه','الوان','غرفه','ثلاجه','كهوه','سفينه','العراق','محطه','طياره','رادار','منزل','مستشفى','كهرباء','تفاحه','اخطبوط','سلمون','فرنسا','برتقاله','تفاح','مطرقه','بتيته','لهانه','شباك','باص','سمكه','ذباب','تلفاز','حاسوب','انترنيت','ساحه','جسر'};
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3533,7 +3519,7 @@ DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end
-if text == 'محيبس' and SourceCh(msg) or text == 'بات' and SourceCh(msg) or text == 'المحيبس' and SourceCh(msg) then
+if text == 'محيبس' and ChCheck(msg) or text == 'بات' and ChCheck(msg) or text == 'المحيبس' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,6)
 DevAbs:set(Engineer2.."GAMES"..msg.chat_id_,Num) 
@@ -3549,7 +3535,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, TEST, 1, "md")
 DevAbs:setex(Engineer2.."SET:GAME"..msg.chat_id_, 100, true)  
 return false  
 end end
-if text == 'حزوره' and SourceCh(msg) or text == 'الحزوره' and SourceCh(msg) then
+if text == 'حزوره' and ChCheck(msg) or text == 'الحزوره' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'الجرس','عقرب الساعه','السمك','المطر','5','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3600,7 +3586,7 @@ DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end 
-if text == 'المعاني' and SourceCh(msg) or text == 'معاني' and SourceCh(msg) then
+if text == 'المعاني' and ChCheck(msg) or text == 'معاني' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'قرد','دجاجه','بطريق','ضفدع','بومه','نحله','ديك','جمل','بقره','دولفين','تمساح','قرش','نمر','اخطبوط','سمكه','خفاش','اسد','فأر','ذئب','فراشه','عقرب','زرافه','قنفذ','تفاحه','باذنجان'}
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3643,7 +3629,7 @@ DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end 
-if text == 'العكس' and SourceCh(msg) or text == 'عكس' and SourceCh(msg) then
+if text == 'العكس' and ChCheck(msg) or text == 'عكس' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','شجاع','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3686,7 +3672,7 @@ DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end 
-if text == 'المختلف' and SourceCh(msg) or text == 'مختلف' and SourceCh(msg) then
+if text == 'المختلف' and ChCheck(msg) or text == 'مختلف' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'😸','☠','🐼','🐇','🌑','🌚','⭐️','📥','⛈','🌥','⛄️','👨‍🔬','👨‍💻','👨‍🔧','👩‍🍳','🧚‍♀','🧚‍♂️','🧝‍♂','🙍‍♂','🧖‍♂','👬','👨‍👨‍👧','🕓','🕤','⌛️','📅','👩‍⚖️','👨‍🎨'};
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3732,7 +3718,7 @@ DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
-if text == 'امثله' and SourceCh(msg) or text == 'الامثله' and SourceCh(msg) then
+if text == 'امثله' and ChCheck(msg) or text == 'الامثله' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {
 'جوز','ضراطه','الحبل','الحافي','شقره','بيدك','سلايه','النخله','الخيل','حداد','المبلل','يركص','قرد','العنب','العمه','الخبز','بالحصاد','شهر','شكه','يكحله',
@@ -3773,7 +3759,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
-if text == 'رياضيات' and SourceCh(msg) or text == 'الرياضيات' and SourceCh(msg) then
+if text == 'رياضيات' and ChCheck(msg) or text == 'الرياضيات' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'9','46','2','9','5','4','25','10','17','15','39','5','16',};
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3805,7 +3791,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
 end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
-if text == 'الانكليزي' and SourceCh(msg) or text == 'الانجليزيه' and SourceCh(msg) or text == 'انكليزيه' and SourceCh(msg) then
+if text == 'الانكليزي' and ChCheck(msg) or text == 'الانجليزيه' and ChCheck(msg) or text == 'انكليزيه' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'معلومات','قنوات','مجموعات','كتاب','تفاحه','سدني','نقود','اعلم','ذئب','تمساح','ذكي','شاطئ','غبي',};
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3837,7 +3823,7 @@ end
 DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
 --     Source Engineer2     --
-if text == 'اسئله' and SourceCh(msg) or text == 'اختيارات' and SourceCh(msg) or text == 'الاسئله' and SourceCh(msg) or text == 'اساله' and SourceCh(msg) then
+if text == 'اسئله' and ChCheck(msg) or text == 'اختيارات' and ChCheck(msg) or text == 'الاسئله' and ChCheck(msg) or text == 'اساله' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'النيل','14','الفم','11','30','بوتين','ستيف جوبر','باريس','10','النمل','حرف الواو','الشعر','سحاب','الاسم','ذهب','حرف الام','العزائم','انسات','المنجنيق','اسيا','6','الاسد','مهر','الدولفين','اوروبا','الزئبق','لندن','الانسان','طوكيو','خديجه',}
 name = DevAbs2[math.random(#DevAbs2)]
@@ -3916,7 +3902,7 @@ end
 end
 end
 end
-if text == 'خمن' and SourceCh(msg) or text == 'تخمين' and SourceCh(msg) then   
+if text == 'خمن' and ChCheck(msg) or text == 'تخمين' and ChCheck(msg) then   
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,20)
 DevAbs:set(Engineer2.."GAMES:NUM"..msg.chat_id_,Num) 
@@ -3977,7 +3963,7 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?cha
 end,nil) 
 end
 --     Source Engineer2     --
-if text == 'كت تويت' and SourceCh(msg) or text == 'كت' and SourceCh(msg) then
+if text == 'كت تويت' and ChCheck(msg) or text == 'كت' and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 local EngineerSource = {
 'آخر مرة زرت مدينة الملاهي؟','آخر مرة أكلت أكلتك المفضّلة؟','الوضع الحالي؟\n‏1. سهران\n‏2. ضايج\n‏3. أتأمل','آخر شيء ضاع منك؟','كلمة أخيرة لشاغل البال؟','طريقتك المعتادة في التخلّص من الطاقة السلبية؟','شهر من أشهر العام له ذكرى جميلة معك؟','كلمة غريبة من لهجتك ومعناها؟🤓','‏- شيء سمعته عالق في ذهنك هاليومين؟','متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟','‏- أبرز صفة حسنة في صديقك المقرب؟','هل تشعر أن هنالك مَن يُحبك؟','اذا اكتشفت أن أعز أصدقائك يضمر لك السوء، موقفك الصريح؟','أجمل شيء حصل معك خلال هاليوم؟','صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔','كلمة لشخص غالي اشتقت إليه؟💕','آخر خبر سعيد، متى وصلك؟','أنا آسف على ....؟','أوصف نفسك بكلمة؟','صريح، مشتاق؟','‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟','‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭','‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤','‏- تخيّل شيء قد يحدث في المستقبل؟','‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚','شخص أو صاحب عوضك ونساك مُر الحياة ما اسمه ؟','| اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.','كم مره تسبح باليوم','نسبة النعاس عندك حاليًا؟','لو فقط مسموح شخص واحد تتابعه فالسناب مين بيكون ؟','يهمك ملابسك تكون ماركة ؟','وش الشيء الي تطلع حرتك فيه و زعلت ؟','عندك أخوان او خوات من الرضاعة؟','عندك معجبين ولا محد درا عنك؟',
@@ -3990,7 +3976,7 @@ return false
 end
 end
 --     Source Engineer2     --
-if text and (text == 'الالعاب' or text == 'العاب' or text == 'اللعبه') and SourceCh(msg) then
+if text and (text == 'الالعاب' or text == 'العاب' or text == 'اللعبه') and ChCheck(msg) then
 if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1,[[
 ⌁︙قائمة العاب المجموعه ↫ ⤈
@@ -4673,7 +4659,7 @@ end
 --     Source Engineer2     --
 --     Set SecondSudo     --
 if Sudo(msg) then
-if text ==('اضف مطور ثانوي') or text ==('رفع مطور ثانوي') and SourceCh(msg) then
+if text ==('اضف مطور ثانوي') or text ==('رفع مطور ثانوي') and ChCheck(msg) then
 function sudo_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:SecondSudo:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المطورين الثانويين")  
@@ -4681,7 +4667,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),sudo_reply)
 end end 
-if text and (text:match('^اضف مطور ثانوي @(.*)') or text:match('^رفع مطور ثانوي @(.*)')) and SourceCh(msg) then
+if text and (text:match('^اضف مطور ثانوي @(.*)') or text:match('^رفع مطور ثانوي @(.*)')) and ChCheck(msg) then
 local username = text:match('^اضف مطور ثانوي @(.*)') or text:match('^رفع مطور ثانوي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4692,14 +4678,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and (text:match('^اضف مطور ثانوي (%d+)') or text:match('^رفع مطور ثانوي (%d+)')) and SourceCh(msg) then
+if text and (text:match('^اضف مطور ثانوي (%d+)') or text:match('^رفع مطور ثانوي (%d+)')) and ChCheck(msg) then
 local user = text:match('اضف مطور ثانوي (%d+)') or text:match('رفع مطور ثانوي (%d+)')
 DevAbs:sadd(Engineer2..'Abs:SecondSudo:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المطورين الثانويين")  
 end
 --     Source Engineer2     --
 --     Rem SecondSudo     --
-if text ==('حذف مطور ثانوي') or text ==('تنزيل مطور ثانوي') and SourceCh(msg) then
+if text ==('حذف مطور ثانوي') or text ==('تنزيل مطور ثانوي') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:SecondSudo:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المطورين الثانويين")  
@@ -4707,7 +4693,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and (text:match('^حذف مطور ثانوي @(.*)') or text:match('^تنزيل مطور ثانوي @(.*)')) and SourceCh(msg) then
+if text and (text:match('^حذف مطور ثانوي @(.*)') or text:match('^تنزيل مطور ثانوي @(.*)')) and ChCheck(msg) then
 local username = text:match('^حذف مطور ثانوي @(.*)') or text:match('^تنزيل مطور ثانوي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4718,7 +4704,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and (text:match('^حذف مطور ثانوي (%d+)') or text:match('^تنزيل مطور ثانوي (%d+)')) and SourceCh(msg) then
+if text and (text:match('^حذف مطور ثانوي (%d+)') or text:match('^تنزيل مطور ثانوي (%d+)')) and ChCheck(msg) then
 local user = text:match('حذف مطور ثانوي (%d+)') or text:match('تنزيل مطور ثانوي (%d+)')
 DevAbs:srem(Engineer2..'Abs:SecondSudo:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المطورين الثانويين")  
@@ -4726,7 +4712,7 @@ end end
 --     Source Engineer2     --
 --       Set SudoBot      --
 if SecondSudo(msg) then
-if text ==('اضف مطور') or text ==('رفع مطور') and SourceCh(msg) then
+if text ==('اضف مطور') or text ==('رفع مطور') and ChCheck(msg) then
 function sudo_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:SudoBot:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المطورين")  
@@ -4734,7 +4720,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),sudo_reply)
 end end 
-if text and (text:match('^اضف مطور @(.*)') or text:match('^رفع مطور @(.*)')) and SourceCh(msg) then
+if text and (text:match('^اضف مطور @(.*)') or text:match('^رفع مطور @(.*)')) and ChCheck(msg) then
 local username = text:match('^اضف مطور @(.*)') or text:match('^رفع مطور @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4745,14 +4731,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and (text:match('^اضف مطور (%d+)') or text:match('^رفع مطور (%d+)')) and SourceCh(msg) then
+if text and (text:match('^اضف مطور (%d+)') or text:match('^رفع مطور (%d+)')) and ChCheck(msg) then
 local user = text:match('اضف مطور (%d+)') or text:match('رفع مطور (%d+)')
 DevAbs:sadd(Engineer2..'Abs:SudoBot:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المطورين")  
 end
 --     Source Engineer2     --
 --       Rem SudoBot      --
-if text ==('حذف مطور') or text ==('تنزيل مطور') and SourceCh(msg) then
+if text ==('حذف مطور') or text ==('تنزيل مطور') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:SudoBot:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المطورين")  
@@ -4760,7 +4746,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and (text:match('^حذف مطور @(.*)') or text:match('^تنزيل مطور @(.*)')) and SourceCh(msg) then
+if text and (text:match('^حذف مطور @(.*)') or text:match('^تنزيل مطور @(.*)')) and ChCheck(msg) then
 local username = text:match('^حذف مطور @(.*)') or text:match('^تنزيل مطور @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4771,7 +4757,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and (text:match('^حذف مطور (%d+)') or text:match('^تنزيل مطور (%d+)')) and SourceCh(msg) then
+if text and (text:match('^حذف مطور (%d+)') or text:match('^تنزيل مطور (%d+)')) and ChCheck(msg) then
 local user = text:match('حذف مطور (%d+)') or text:match('تنزيل مطور (%d+)')
 DevAbs:srem(Engineer2..'Abs:SudoBot:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المطورين")  
@@ -4779,7 +4765,7 @@ end end
 --     Source Engineer2     --
 --      Set ManagerAll    --
 if SudoBot(msg) then
-if text ==('رفع مدير عام') and SourceCh(msg) then
+if text ==('رفع مدير عام') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:ManagerAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المدراء العامين")  
@@ -4787,7 +4773,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
-if text and text:match('^رفع مدير عام @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع مدير عام @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مدير عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4798,14 +4784,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع مدير عام (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع مدير عام (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مدير عام (%d+)')
 DevAbs:sadd(Engineer2..'Abs:ManagerAll:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المدراء العامين")  
 end
 --     Source Engineer2     --
 --      Rem ManagerAll    --
-if text ==('تنزيل مدير عام') and SourceCh(msg) then
+if text ==('تنزيل مدير عام') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:ManagerAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المدراء العامين")  
@@ -4813,7 +4799,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل مدير عام @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل مدير عام @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل مدير عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4824,7 +4810,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل مدير عام (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل مدير عام (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مدير عام (%d+)')
 DevAbs:srem(Engineer2..'Abs:ManagerAll:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المدراء العامين")  
@@ -4832,7 +4818,7 @@ end end
 --     Source Engineer2     --
 --      Set adminall      --
 if ManagerAll(msg) then
-if text ==('رفع ادمن عام') and SourceCh(msg) then
+if text ==('رفع ادمن عام') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:AdminAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة الادمنيه العامين")  
@@ -4840,7 +4826,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
-if text and text:match('^رفع ادمن عام @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع ادمن عام @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع ادمن عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4851,14 +4837,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع ادمن عام (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع ادمن عام (%d+)') and ChCheck(msg) then
 local user = text:match('رفع ادمن عام (%d+)')
 DevAbs:sadd(Engineer2..'Abs:AdminAll:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة الادمنيه العامين")  
 end
 --     Source Engineer2     --
 --      Rem adminall      --
-if text ==('تنزيل ادمن عام') and SourceCh(msg) then
+if text ==('تنزيل ادمن عام') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:AdminAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة الادمنيه العامين")  
@@ -4866,7 +4852,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل ادمن عام @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل ادمن عام @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل ادمن عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4877,7 +4863,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل ادمن عام (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل ادمن عام (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل ادمن عام (%d+)')
 DevAbs:srem(Engineer2..'Abs:AdminAll:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة الادمنيه العامين")  
@@ -4885,7 +4871,7 @@ end end
 --     Source Engineer2     --
 --       Set Vipall       --
 if AdminAll(msg) then
-if text ==('رفع مميز عام') and SourceCh(msg) then
+if text ==('رفع مميز عام') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:VipAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المميزين العام")  
@@ -4893,7 +4879,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
-if text and text:match('^رفع مميز عام @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع مميز عام @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مميز عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4904,14 +4890,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع مميز عام (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع مميز عام (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مميز عام (%d+)')
 DevAbs:sadd(Engineer2..'Abs:VipAll:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المميزين العام")  
 end
 --     Source Engineer2     --
 --       Rem Vipall       --
-if text ==('تنزيل مميز عام') and SourceCh(msg) then
+if text ==('تنزيل مميز عام') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:VipAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المميزين العام")  
@@ -4919,7 +4905,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل مميز عام @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل مميز عام @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل مميز عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4930,7 +4916,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل مميز عام (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل مميز عام (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مميز عام (%d+)')
 DevAbs:srem(Engineer2..'Abs:VipAll:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المميزين العام")  
@@ -4939,7 +4925,7 @@ end end
 --   Set AbsConstructor   --
 if ChatType == 'sp' or ChatType == 'gp'  then
 if SudoBot(msg) then
-if text ==('رفع مالك') and SourceCh(msg) then
+if text ==('رفع مالك') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:AbsConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه مالك")  
@@ -4947,7 +4933,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
-if text and text:match('^رفع مالك @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع مالك @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مالك @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -4958,14 +4944,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع مالك (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع مالك (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مالك (%d+)')
 DevAbs:sadd(Engineer2..'Abs:AbsConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه مالك")  
 end
 --     Source Engineer2     --
 --   Rem AbsConstructor   --
-if text ==('تنزيل مالك') and SourceCh(msg) then
+if text ==('تنزيل مالك') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 local admins = data.members_
@@ -4983,7 +4969,7 @@ if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end 
 end
-if text and text:match('^تنزيل مالك @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل مالك @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل مالك @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5003,7 +4989,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل مالك (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل مالك (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مالك (%d+)')
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 local admins = data.members_
@@ -5020,7 +5006,7 @@ end end
 --     Source Engineer2     --
 --  Set BasicConstructor  --
 if AbsConstructor(msg) then
-if text ==('رفع منشئ اساسي') and SourceCh(msg) then
+if text ==('رفع منشئ اساسي') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه منشئ اساسي")  
@@ -5028,7 +5014,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
-if text and text:match('^رفع منشئ اساسي @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع منشئ اساسي @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع منشئ اساسي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5039,14 +5025,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع منشئ اساسي (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع منشئ اساسي (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منشئ اساسي (%d+)')
 DevAbs:sadd(Engineer2..'Abs:BasicConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه منشئ اساسي")  
 end
 --     Source Engineer2     --
 --  Rem BasicConstructor  --
-if text ==('تنزيل منشئ اساسي') and SourceCh(msg) then
+if text ==('تنزيل منشئ اساسي') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله منشئ اساسي")  
@@ -5054,7 +5040,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل منشئ اساسي @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل منشئ اساسي @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل منشئ اساسي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5065,7 +5051,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل منشئ اساسي (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل منشئ اساسي (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منشئ اساسي (%d+)')
 DevAbs:srem(Engineer2..'Abs:BasicConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله منشئ اساسي")  
@@ -5076,7 +5062,7 @@ end
 --     Source Engineer2     --
 --    Set  Constructor    --
 if BasicConstructor(msg) then
-if text ==('رفع منشئ') and SourceCh(msg) then
+if text ==('رفع منشئ') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:Constructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المنشئين")  
@@ -5084,7 +5070,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
-if text and text:match('^رفع منشئ @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع منشئ @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع منشئ @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5095,14 +5081,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع منشئ (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع منشئ (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منشئ (%d+)')
 DevAbs:sadd(Engineer2..'Abs:Constructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المنشئين")  
 end
 --     Source Engineer2     --
 --    Rem  Constructor    --
-if text ==('تنزيل منشئ') and SourceCh(msg) then
+if text ==('تنزيل منشئ') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:Constructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المنشئين")  
@@ -5110,7 +5096,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل منشئ @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل منشئ @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل منشئ @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5121,7 +5107,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل منشئ (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل منشئ (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منشئ (%d+)')
 DevAbs:srem(Engineer2..'Abs:Constructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المنشئين")  
@@ -5130,7 +5116,7 @@ end
 --     Source Engineer2     --
 --      Set Manager       --
 if Constructor(msg) then
-if text ==('رفع مدير') and SourceCh(msg) then
+if text ==('رفع مدير') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:Managers:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المدراء")  
@@ -5138,7 +5124,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^رفع مدير @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع مدير @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مدير @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5149,14 +5135,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end 
-if text and text:match('^رفع مدير (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع مدير (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مدير (%d+)')
 DevAbs:sadd(Engineer2..'Abs:Managers:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المدراء")  
 end
 --     Source Engineer2     --
 --       Rem Manager      --
-if text ==('تنزيل مدير') and SourceCh(msg) then
+if text ==('تنزيل مدير') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:Managers:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المدراء")  
@@ -5164,7 +5150,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل مدير @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل مدير @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل مدير @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5175,14 +5161,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل مدير (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل مدير (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مدير (%d+)')
 DevAbs:srem(Engineer2..'Abs:Managers:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المدراء")  
 end 
 --     Source Engineer2     --
 --       Set Cleaner      --
-if text ==('رفع منظف') and SourceCh(msg) then
+if text ==('رفع منظف') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:sadd(Engineer2..'Abs:Cleaner:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المنظفين")  
@@ -5190,7 +5176,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^رفع منظف @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع منظف @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع منظف @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5201,14 +5187,14 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع منظف (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع منظف (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منظف (%d+)')
 DevAbs:sadd(Engineer2..'Abs:Cleaner:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المنظفين")  
 end
 --     Source Engineer2     --
 --       Rem Cleaner      --
-if text ==('تنزيل منظف') and SourceCh(msg) then
+if text ==('تنزيل منظف') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:Cleaner:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المنظفين")  
@@ -5216,7 +5202,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل منظف @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل منظف @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل منظف @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5227,7 +5213,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل منظف (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل منظف (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منظف (%d+)')
 DevAbs:srem(Engineer2..'Abs:Cleaner:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المنظفين")  
@@ -5235,7 +5221,7 @@ end end
 --     Source Engineer2     --
 --       Set admin        --
 if Manager(msg) then
-if text ==('رفع ادمن') and SourceCh(msg) then
+if text ==('رفع ادمن') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 if not BasicConstructor(msg) and DevAbs:get(Engineer2.."Abs:Lock:ProSet"..msg.chat_id_) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
@@ -5247,7 +5233,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^رفع ادمن @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع ادمن @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع ادمن @(.*)')
 function promreply(extra,result,success)
 if not BasicConstructor(msg) and DevAbs:get(Engineer2.."Abs:Lock:ProSet"..msg.chat_id_) then 
@@ -5262,7 +5248,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع ادمن (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع ادمن (%d+)') and ChCheck(msg) then
 local user = text:match('رفع ادمن (%d+)')
 if not BasicConstructor(msg) and DevAbs:get(Engineer2.."Abs:Lock:ProSet"..msg.chat_id_) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
@@ -5273,7 +5259,7 @@ ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة الادمني
 end
 --     Source Engineer2     --
 --        Rem admin       --
-if text ==('تنزيل ادمن') and SourceCh(msg) then
+if text ==('تنزيل ادمن') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:Admins:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة الادمنيه")  
@@ -5281,7 +5267,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل ادمن @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل ادمن @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل ادمن @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5292,7 +5278,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل ادمن (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل ادمن (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل ادمن (%d+)')
 DevAbs:srem(Engineer2..'Abs:Admins:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة الادمنيه")  
@@ -5300,7 +5286,7 @@ end end
 --     Source Engineer2     --
 --       Set Vipmem       --
 if Admin(msg) then
-if text ==('رفع مميز') and SourceCh(msg) then
+if text ==('رفع مميز') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 if not BasicConstructor(msg) and DevAbs:get(Engineer2.."Abs:Lock:ProSet"..msg.chat_id_) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
@@ -5312,7 +5298,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^رفع مميز @(.*)') and SourceCh(msg) then
+if text and text:match('^رفع مميز @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مميز @(.*)')
 function promreply(extra,result,success)
 if not BasicConstructor(msg) and DevAbs:get(Engineer2.."Abs:Lock:ProSet"..msg.chat_id_) then 
@@ -5327,7 +5313,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^رفع مميز (%d+)') and SourceCh(msg) then
+if text and text:match('^رفع مميز (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مميز (%d+)')
 if not BasicConstructor(msg) and DevAbs:get(Engineer2.."Abs:Lock:ProSet"..msg.chat_id_) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
@@ -5338,7 +5324,7 @@ ReplyStatus(msg,user,"Reply","⌁︙تم رفعه في قائمة المميزي
 end
 --     Source Engineer2     --
 --       Rem Vipmem       --
-if text ==('تنزيل مميز') and SourceCh(msg) then
+if text ==('تنزيل مميز') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevAbs:srem(Engineer2..'Abs:VipMem:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المميزين")  
@@ -5346,7 +5332,7 @@ end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
-if text and text:match('^تنزيل مميز @(.*)') and SourceCh(msg) then
+if text and text:match('^تنزيل مميز @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل مميز @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
@@ -5357,7 +5343,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md
 end end 
 resolve_username(username,promreply)
 end
-if text and text:match('^تنزيل مميز (%d+)') and SourceCh(msg) then
+if text and text:match('^تنزيل مميز (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مميز (%d+)')
 DevAbs:srem(Engineer2..'Abs:VipMem:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المميزين")  
@@ -6637,7 +6623,7 @@ local EngineerSource = '⌁︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌁�
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, EngineerSource, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Engineer2..'Abs:Thwel:Abs'..msg.chat_id_,true)  
 end
-if text == 'تحويل' and not DevAbs:get(Engineer2..'Abs:Thwel:Abs'..msg.chat_id_) and SourceCh(msg) then  
+if text == 'تحويل' and not DevAbs:get(Engineer2..'Abs:Thwel:Abs'..msg.chat_id_) and ChCheck(msg) then  
 if tonumber(msg.reply_to_message_id_) > 0 then 
 function ThwelByReply(extra, result, success)
 if result.content_.photo_ then 
@@ -8558,7 +8544,7 @@ local rules = DevAbs:get(Engineer2..'Abs:rules'..msg.chat_id_)
 Dev_Abs(msg.chat_id_, msg.id_, 1, rules, 1, nil)
 end
 --     Source Engineer2     --
-if text == 'رقمي' and SourceCh(msg) then
+if text == 'رقمي' and ChCheck(msg) then
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(extra,result,success)
 if result.phone_number_  then
 MyNumber = "⌁︙رقمك ↫ +"..result.phone_number_
@@ -8579,7 +8565,7 @@ local EngineerSource = '⌁︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌁�
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, EngineerSource, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Engineer2..'Abs:Antk:Abs'..msg.chat_id_,true)  
 end
-if text and text:match("^انطق (.*)$") and not DevAbs:get(Engineer2..'Abs:Antk:Abs'..msg.chat_id_) and SourceCh(msg) then
+if text and text:match("^انطق (.*)$") and not DevAbs:get(Engineer2..'Abs:Antk:Abs'..msg.chat_id_) and ChCheck(msg) then
 local UrlAntk = https.request('https://apiabs.ml/Antk.php?abs='..URL.escape(text:match("^انطق (.*)$")))
 Antk = JSON.decode(UrlAntk)
 if UrlAntk.ok ~= false then
@@ -8624,7 +8610,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الكلمه لزخرفت
 end
 end
 if not DevAbs:get(Engineer2..'Abs:Zrf:Abs'..msg.chat_id_) then
-if text and text:match("^زخرفه (.*)$") and SourceCh(msg) or text and text:match("^زخرف (.*)$") and SourceCh(msg) then 
+if text and text:match("^زخرفه (.*)$") and ChCheck(msg) or text and text:match("^زخرف (.*)$") and ChCheck(msg) then 
 local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf)) 
 Zrf = JSON.decode(UrlZrf) 
@@ -8649,7 +8635,7 @@ absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, EngineerSource, 14, string.
 DevAbs:set(Engineer2..'Abs:Brg:Abs'..msg.chat_id_,true)  
 end
 if not DevAbs:get(Engineer2..'Abs:Brg:Abs'..msg.chat_id_) then
-if text and text:match("^برج (.*)$") and SourceCh(msg) or text and text:match("^برجي (.*)$") and SourceCh(msg) then 
+if text and text:match("^برج (.*)$") and ChCheck(msg) or text and text:match("^برجي (.*)$") and ChCheck(msg) then 
 local TextBrg = text:match("^برج (.*)$") or text:match("^برجي (.*)$") 
 UrlBrg = https.request('https://apiabs.ml/brg.php?brg='..URL.escape(TextBrg)) 
 Brg = JSON.decode(UrlBrg) 
@@ -8669,7 +8655,7 @@ absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, EngineerSource, 14, string.
 DevAbs:set(Engineer2..'Abs:Nsba:Abs'..msg.chat_id_,true)  
 end
 if not DevAbs:get(Engineer2..'Abs:Nsba:Abs'..msg.chat_id_) then
-if text == "نسبه الحب" and SourceCh(msg) or text == "نسبة الحب" and SourceCh(msg) then
+if text == "نسبه الحب" and ChCheck(msg) or text == "نسبة الحب" and ChCheck(msg) then
 DevAbs:set(Engineer2..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال ↫ جاك وروز', 1, 'md')
 end
@@ -8686,7 +8672,7 @@ DevAbs:del(Engineer2..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_)
 return false 
 end
 if not DevAbs:get(Engineer2..'Abs:Nsba:Abs'..msg.chat_id_) then
-if text == "نسبه الكره" and SourceCh(msg) or text == "نسبة الكره" and SourceCh(msg) then
+if text == "نسبه الكره" and ChCheck(msg) or text == "نسبة الكره" and ChCheck(msg) then
 DevAbs:set(Engineer2..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال ↫ جاك وروز', 1, 'md')
 end
@@ -8703,7 +8689,7 @@ DevAbs:del(Engineer2..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_)
 return false 
 end
 if not DevAbs:get(Engineer2..'Abs:Nsba:Abs'..msg.chat_id_) then
-if text and (text == "نسبه الرجوله" or text == "نسبة الرجوله" or text == "نسبه رجوله" or text == "نسبة رجوله") and SourceCh(msg) then
+if text and (text == "نسبه الرجوله" or text == "نسبة الرجوله" or text == "نسبه رجوله" or text == "نسبة رجوله") and ChCheck(msg) then
 DevAbs:set(Engineer2..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال ↫ جاك', 1, 'md')
 end
@@ -8720,7 +8706,7 @@ DevAbs:del(Engineer2..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_)
 return false 
 end
 if not DevAbs:get(Engineer2..'Abs:Nsba:Abs'..msg.chat_id_) then
-if text and (text == "نسبه الانوثه" or text == "نسبة الانوثه" or text == "نسبه انوثه" or text == "نسبة انوثه") and SourceCh(msg) then
+if text and (text == "نسبه الانوثه" or text == "نسبة الانوثه" or text == "نسبه انوثه" or text == "نسبة انوثه") and ChCheck(msg) then
 DevAbs:set(Engineer2..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙قم بارسل اسم الشخص لقياس نسبة انوثته كمثال ↫ روز', 1, 'md')
 end
@@ -8737,7 +8723,7 @@ DevAbs:del(Engineer2..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_)
 return false 
 end
 if not DevAbs:get(Engineer2..'Abs:Nsba:Abs'..msg.chat_id_) then
-if text and (text == "نسبه الغباء" or text == "نسبة الغباء") and SourceCh(msg) then
+if text and (text == "نسبه الغباء" or text == "نسبة الغباء") and ChCheck(msg) then
 DevAbs:set(Engineer2..'StupidNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال ↫ جاك او روز', 1, 'md')
 end
@@ -8765,7 +8751,7 @@ absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, EngineerSource, 14, string.
 DevAbs:set(Engineer2..'Abs:Age:Abs'..msg.chat_id_,true)  
 end
 if not DevAbs:get(Engineer2..'Abs:Age:Abs'..msg.chat_id_) then
-if text and text:match("^احسب (.*)$") and SourceCh(msg) or text and text:match("^عمري (.*)$") and SourceCh(msg) then 
+if text and text:match("^احسب (.*)$") and ChCheck(msg) or text and text:match("^عمري (.*)$") and ChCheck(msg) then 
 local TextAge = text:match("^احسب (.*)$") or text:match("^عمري (.*)$") 
 UrlAge = https.request('https://apiabs.ml/age.php?age='..URL.escape(TextAge)) 
 Age = JSON.decode(UrlAge) 
@@ -8785,7 +8771,7 @@ absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, EngineerSource, 14, string.
 DevAbs:set(Engineer2..'Abs:Mean:Abs'..msg.chat_id_,true)  
 end
 if not DevAbs:get(Engineer2..'Abs:Mean:Abs'..msg.chat_id_) then
-if text and text:match("^معنى الاسم (.*)$") and SourceCh(msg) or text and text:match("^معنى اسم (.*)$") and SourceCh(msg) then 
+if text and text:match("^معنى الاسم (.*)$") and ChCheck(msg) or text and text:match("^معنى اسم (.*)$") and ChCheck(msg) then 
 local TextMean = text:match("^معنى الاسم (.*)$") or text:match("^معنى اسم (.*)$") 
 UrlMean = https.request('https://apiabs.ml/Mean.php?Abs='..URL.escape(TextMean)) 
 Mean = JSON.decode(UrlMean) 
@@ -8804,7 +8790,7 @@ local EngineerSource = '⌁︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌁�
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, EngineerSource, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Engineer2..'Abs:Audios:Abs'..msg.chat_id_,true)  
 end
-if text == "غنيلي" and not DevAbs:get(Engineer2..'Abs:Audios:Abs'..msg.chat_id_) and SourceCh(msg) then
+if text == "غنيلي" and not DevAbs:get(Engineer2..'Abs:Audios:Abs'..msg.chat_id_) and ChCheck(msg) then
 data,res = https.request('https://apiabs.ml/Audios.php')
 if res == 200 then
 Audios = json:decode(data)
@@ -10407,7 +10393,8 @@ end
 if text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local FileGet = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 local FileName = FileGet[2]..'.lua'
-local GetJson, Res = https.request("https://raw.githubusercontent.com/EngineerSource/Engineer2Files/main/Engineer2Files/"..FileName)
+local GetJson, Res = https.request("https://raw.
+ubusercontent.com/EngineerSource/Engineer2Files/main/Engineer2Files/"..FileName)
 if Res == 200 then
 os.execute("rm -fr Files/"..FileName)
 send(msg.chat_id_, msg.id_,"\n⌁︙الملف ↫ *"..FileName.."*\n⌁︙تم تعطيله وحذفه من البوت بنجاح") 
