@@ -3327,12 +3327,12 @@ end
 if text ==  'حذف رسائلي' and ChCheck(msg) or text ==  'مسح رسائلي' and ChCheck(msg) then DevAbs:del(Engineer2..'Abs:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم حذف جميع رسائلك', 1, 'md') end
 if text ==  'حذف نقاطي' and ChCheck(msg) or text ==  'مسح نقاطي' and ChCheck(msg) then DevAbs:del(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم حذف جميع نقاطك', 1, 'md') end
 --     Source Engineer2     --
-if text == 'سمايلات' and ChCheck(msg) or text == 'السمايلات' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'سمايلات' and ChCheck(msg) or text == 'السمايلات' and ChCheck(msg) or text == '↫ سمايلات ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🏆','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🛎','📤','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔️','🛡','🔮','🌡','💣','⏱','🛢','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'🍞','🍞')
 name = string.gsub(name,'🥖','🥖')
 name = string.gsub(name,'🥨','🥨')
@@ -3449,24 +3449,24 @@ name = string.gsub(name,'⏰','⏰')
 name = string.gsub(name,'📺','📺')
 name = string.gsub(name,'🎚','🎚')
 name = string.gsub(name,'☎️','☎️')
-EngineerSource = '⌁︙اول واحد يدز هذا السمايل يربح ↫ '..name
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙اول واحد يدز هذا السمايل يربح ↫ '..name
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ سمايلات للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+if text == DevAbs:get(Engineer..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ سمايلات للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end
-if text == 'ترتيب' and ChCheck(msg) or text == 'الترتيب' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'ترتيب' and ChCheck(msg) or text == 'الترتيب' and ChCheck(msg) or text == '↫ ترتيب ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'سحور','سياره','استقبال','قنفه','ايفون','بزونه','مطبخ','كرستيانو','دجاجه','مدرسه','الوان','غرفه','ثلاجه','كهوه','سفينه','العراق','محطه','طياره','رادار','منزل','مستشفى','كهرباء','تفاحه','اخطبوط','سلمون','فرنسا','برتقاله','تفاح','مطرقه','بتيته','لهانه','شباك','باص','سمكه','ذباب','تلفاز','حاسوب','انترنيت','ساحه','جسر'};
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'سحور','س ر و ح')
 name = string.gsub(name,'سياره','ه ر س ي ا')
 name = string.gsub(name,'استقبال','ل ب ا ت ق س ا')
@@ -3507,40 +3507,39 @@ name = string.gsub(name,'حاسوب','س ا ح و ب')
 name = string.gsub(name,'انترنيت','ا ت ن ر ن ي ت')
 name = string.gsub(name,'ساحه','ح ا ه س')
 name = string.gsub(name,'جسر','ر ج س')
-EngineerSource = '⌁︙اول واحد يرتبها يربح ↫ '..name
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙اول واحد يرتبها يربح ↫ '..name
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ ترتيب للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+if text == DevAbs:get(Engineer..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ ترتيب للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end
-if text == 'محيبس' and ChCheck(msg) or text == 'بات' and ChCheck(msg) or text == 'المحيبس' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'محيبس' and ChCheck(msg) or text == 'بات' and ChCheck(msg) or text == 'المحيبس' and ChCheck(msg) or text == '↫ محيبس ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,6)
-DevAbs:set(Engineer2.."GAMES"..msg.chat_id_,Num) 
+DevAbs:set(Engineer.."GAMES"..msg.chat_id_,Num) 
 TEST = [[
 ➀     ➁     ➂     ➃     ➄     ➅
 ↓     ↓     ↓     ↓     ↓     ↓
 👊 ‹› 👊🏻 ‹› 👊🏼 ‹› 👊🏽 ‹› 👊🏾 ‹› 👊🏿
-
 ⌁︙اختر رقم لاستخراج المحيبس
 ⌁︙الفائز يحصل على (5) نقاط
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, TEST, 1, "md") 
-DevAbs:setex(Engineer2.."SET:GAME"..msg.chat_id_, 100, true)  
+DevAbs:setex(Engineer.."SET:GAME"..msg.chat_id_, 100, true)  
 return false  
 end end
-if text == 'حزوره' and ChCheck(msg) or text == 'الحزوره' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'حزوره' and ChCheck(msg) or text == 'الحزوره' and ChCheck(msg) or text == '↫ حزوره ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'الجرس','عقرب الساعه','السمك','المطر','5','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'الجرس','شيئ اذا لمسته صرخ ما هوه ؟')
 name = string.gsub(name,'عقرب الساعه','اخوان لا يستطيعان تمضيه اكثر من دقيقه معا فما هما ؟')
 name = string.gsub(name,'السمك','ما هو الحيوان الذي لم يصعد الى سفينة نوح عليه السلام ؟')
@@ -3574,24 +3573,24 @@ name = string.gsub(name,'الثلج','انا ابن الماء فان تركون
 name = string.gsub(name,'الاسفنج','كلي ثقوب ومع ذالك احفض الماء فمن اكون ؟')
 name = string.gsub(name,'الصوت','اسير بلا رجلين ولا ادخل الا بالاذنين فمن انا ؟')
 name = string.gsub(name,'بلم','حامل ومحمول نصف ناشف ونصف مبلول فمن اكون ؟ ')
-EngineerSource = '⌁︙اول واحد يحلها يربح ↫ '..name
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙اول واحد يحلها يربح ↫ '..name
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ حزوره للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+if text == DevAbs:get(Engineer..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ حزوره للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end 
-if text == 'المعاني' and ChCheck(msg) or text == 'معاني' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'المعاني' and ChCheck(msg) or text == 'معاني' and ChCheck(msg) or text == '↫ معاني ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'قرد','دجاجه','بطريق','ضفدع','بومه','نحله','ديك','جمل','بقره','دولفين','تمساح','قرش','نمر','اخطبوط','سمكه','خفاش','اسد','فأر','ذئب','فراشه','عقرب','زرافه','قنفذ','تفاحه','باذنجان'}
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum2'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum2'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'قرد','🐒')
 name = string.gsub(name,'دجاجه','🐔')
 name = string.gsub(name,'بطريق','🐧')
@@ -3617,24 +3616,24 @@ name = string.gsub(name,'زرافه','🦒')
 name = string.gsub(name,'قنفذ','🦔')
 name = string.gsub(name,'تفاحه','🍎')
 name = string.gsub(name,'باذنجان','🍆')
-EngineerSource = '⌁︙ما معنى هذا السمايل :؟ ↫ '..name
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙ما معنى هذا السمايل :؟ ↫ '..name
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum2'..msg.chat_id_) and not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ المعاني للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+if text == DevAbs:get(Engineer..'Abs:GameNum2'..msg.chat_id_) and not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ المعاني للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end 
-if text == 'العكس' and ChCheck(msg) or text == 'عكس' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'العكس' and ChCheck(msg) or text == 'عكس' and ChCheck(msg) or text == '↫ العكس ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','شجاع','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum3'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum3'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'باي','هلو')
 name = string.gsub(name,'فهمت','مافهمت')
 name = string.gsub(name,'موزين','زين')
@@ -3660,24 +3659,24 @@ name = string.gsub(name,'موعطشان','عطشان')
 name = string.gsub(name,'خوش ولد','موخوش ولد')
 name = string.gsub(name,'اني','مطي')
 name = string.gsub(name,'هادئ','عصبي')
-EngineerSource = '⌁︙ما هو عكس كلمة ↫ '..name
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙ما هو عكس كلمة ↫ '..name
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum3'..msg.chat_id_) and not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ العكس للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+if text == DevAbs:get(Engineer..'Abs:GameNum3'..msg.chat_id_) and not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ العكس للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end 
-if text == 'المختلف' and ChCheck(msg) or text == 'مختلف' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'المختلف' and ChCheck(msg) or text == 'مختلف' and ChCheck(msg) or text == '↫ المختلف ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'😸','☠','🐼','🐇','🌑','🌚','⭐️','📥','⛈','🌥','⛄️','👨‍🔬','👨‍💻','👨‍🔧','👩‍🍳','🧚‍♀','🧚‍♂️','🧝‍♂','🙍‍♂','🧖‍♂','👬','👨‍👨‍👧','🕓','🕤','⌛️','📅','👩‍⚖️','👨‍🎨'};
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum4'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum4'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'😸','😹😹😹😸😹😹😹😹')
 name = string.gsub(name,'☠️','💀💀💀☠️💀💀💀💀')
 name = string.gsub(name,'🐼','👻👻👻👻👻👻👻🐼')
@@ -3706,26 +3705,26 @@ name = string.gsub(name,'⌛️','⏳⏳⏳⏳⏳⌛️⏳⏳')
 name = string.gsub(name,'📅','📆📆📆📆📆📅📆📆')
 name = string.gsub(name,'👩‍⚖️','👨‍⚖️👨‍⚖️👨‍⚖️👨‍⚖️👨‍⚖️👩‍⚖️👨‍⚖️👨‍⚖️')
 name = string.gsub(name,'👨‍🎨','👩‍🎨👩‍🎨👨‍🎨👩‍🎨👩‍🎨👩‍🎨👩‍🎨👩‍🎨')
-EngineerSource = '⌁︙اول واحد يطلع المختلف يربح\n{'..name..'} '
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙اول واحد يطلع المختلف يربح\n{'..name..'} '
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum4'..msg.chat_id_) and not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ المختلف للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+if text == DevAbs:get(Engineer..'Abs:GameNum4'..msg.chat_id_) and not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ المختلف للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
-if text == 'امثله' and ChCheck(msg) or text == 'الامثله' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'امثله' and ChCheck(msg) or text == 'الامثله' and ChCheck(msg) or text == '↫ امثله ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {
 'جوز','ضراطه','الحبل','الحافي','شقره','بيدك','سلايه','النخله','الخيل','حداد','المبلل','يركص','قرد','العنب','العمه','الخبز','بالحصاد','شهر','شكه','يكحله',
 };
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum5'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum5'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'جوز','ينطي ___ للماعنده سنون')
 name = string.gsub(name,'ضراطه','الي يسوق المطي يتحمل ___ ')
 name = string.gsub(name,'بيدك','اكل ___ محد يفيدك')
@@ -3746,25 +3745,25 @@ name = string.gsub(name,'شهر','امشي ___ ولا تعبر نهر')
 name = string.gsub(name,'شكه','يامن تعب يامن ___ يا من على الحاضر لكة')
 name = string.gsub(name,'القرد',' ___ بعين امه غزال')
 name = string.gsub(name,'يكحله','اجه ___ عماها')
-EngineerSource = '⌁︙اكمل المثال التالي ↫ ['..name..']'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙اكمل المثال التالي ↫ ['..name..']'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum5'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-DevAbs:del(Engineer2..'Abs:GameNum5'..msg.chat_id_)
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ امثله للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+if text == DevAbs:get(Engineer..'Abs:GameNum5'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+DevAbs:del(Engineer..'Abs:GameNum5'..msg.chat_id_)
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ امثله للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
-if text == 'رياضيات' and ChCheck(msg) or text == 'الرياضيات' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'رياضيات' and ChCheck(msg) or text == 'الرياضيات' and ChCheck(msg) or text == '↫ رياضيات ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'9','46','2','9','5','4','25','10','17','15','39','5','16',};
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum6'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum6'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'9','7 + 2 = ?')
 name = string.gsub(name,'46','41 + 5 = ?')
 name = string.gsub(name,'2','5 - 3 = ?')
@@ -3778,25 +3777,25 @@ name = string.gsub(name,'15','25 - 10 = ?')
 name = string.gsub(name,'39','44 - 5 = ?')
 name = string.gsub(name,'5','12 + 1 - 8 = ?')
 name = string.gsub(name,'16','16 + 16 - 16 = ?')
-EngineerSource = '⌁︙اكمل المعادله التاليه ↫ ⤈\n{'..name..'} '
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙اكمل المعادله التاليه ↫ ⤈\n{'..name..'} '
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum6'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-DevAbs:del(Engineer2..'Abs:GameNum6'..msg.chat_id_)
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ رياضيات للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+if text == DevAbs:get(Engineer..'Abs:GameNum6'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+DevAbs:del(Engineer..'Abs:GameNum6'..msg.chat_id_)
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ رياضيات للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
-if text == 'الانكليزي' and ChCheck(msg) or text == 'الانجليزيه' and ChCheck(msg) or text == 'انكليزيه' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'الانكليزي' and ChCheck(msg) or text == 'الانجليزيه' and ChCheck(msg) or text == 'انكليزيه' and ChCheck(msg) or text == '↫ انكليزي ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'معلومات','قنوات','مجموعات','كتاب','تفاحه','سدني','نقود','اعلم','ذئب','تمساح','ذكي','شاطئ','غبي',};
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum7'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum7'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'ذئب','Wolf')
 name = string.gsub(name,'معلومات','Information')
 name = string.gsub(name,'قنوات','Channels')
@@ -3809,26 +3808,26 @@ name = string.gsub(name,'تمساح','crocodile')
 name = string.gsub(name,'شاطئ','Beach')
 name = string.gsub(name,'غبي','Stupid')
 name = string.gsub(name,'صداقه','Friendchip')
-EngineerSource = '⌁︙ما معنى كلمة ↫ '..name
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = '⌁︙ما معنى كلمة ↫ '..name
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum7'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-DevAbs:del(Engineer2..'Abs:GameNum7'..msg.chat_id_)
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ انكليزيه للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+if text == DevAbs:get(Engineer..'Abs:GameNum7'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+DevAbs:del(Engineer..'Abs:GameNum7'..msg.chat_id_)
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ انكليزيه للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
---     Source Engineer2     --
-if text == 'اسئله' and ChCheck(msg) or text == 'اختيارات' and ChCheck(msg) or text == 'الاسئله' and ChCheck(msg) or text == 'اساله' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+--     Source Engineer     --
+if text == 'اسئله' and ChCheck(msg) or text == 'اختيارات' and ChCheck(msg) or text == 'الاسئله' and ChCheck(msg) or text == 'اساله' and ChCheck(msg) or text == '↫ اسئله ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'النيل','14','الفم','11','30','بوتين','ستيف جوبر','باريس','10','النمل','حرف الواو','الشعر','سحاب','الاسم','ذهب','حرف الام','العزائم','انسات','المنجنيق','اسيا','6','الاسد','مهر','الدولفين','اوروبا','الزئبق','لندن','الانسان','طوكيو','خديجه',}
 name = DevAbs2[math.random(#DevAbs2)]
-DevAbs:set(Engineer2..'Abs:GameNum8'..msg.chat_id_,name)
-DevAbs:del(Engineer2..'Abs:Games:Ids'..msg.chat_id_)
+DevAbs:set(Engineer..'Abs:GameNum8'..msg.chat_id_,name)
+DevAbs:del(Engineer..'Abs:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'النيل','⌁︙ماهو اطول نهر في العالم ؟\n1- النيل\n2- الفرات\n3- نهر الكونغو')
 name = string.gsub(name,'14','⌁︙ماعدد عظام الوجه ؟\n1- 15\n2- 13\n3- 14')
 name = string.gsub(name,'الفم','⌁︙كراسي بيضاء وجدران ورديه اذا اغلقته اصبح ظلام  فمن اكون ؟\n1- الفم\n2- الاذن\n3- الثلاجه')
@@ -3859,42 +3858,42 @@ name = string.gsub(name,'لندن','⌁︙ماهي عاصمه انجلترا ؟\
 name = string.gsub(name,'الانسان','⌁︙ماهو الشئ الذي برأسه سبع فتحات ؟\n1- الهاتف\n2- التلفاز\n3- الانسان')
 name = string.gsub(name,'طوكيو','⌁︙ماهي عاصمه اليابان ؟\n1- بانكول\n2- نيو دلهي\n3- طوكيو')
 name = string.gsub(name,'خديجه','⌁︙من هي زوجه الرسول الاكبر منه سنآ ؟\n1- حفضه\n2- زينب\n3- خديجه')
-EngineerSource = name..'\n⌁︙ارسل الجواب الصحيح فقط'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+Engineer_dev = name..'\n⌁︙ارسل الجواب الصحيح فقط'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 return false
 end end
-if text == DevAbs:get(Engineer2..'Abs:GameNum8'..msg.chat_id_) then
-if not DevAbs:get(Engineer2..'Abs:Games:Ids'..msg.chat_id_) then 
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-DevAbs:del(Engineer2..'Abs:GameNum8'..msg.chat_id_)
-EngineerSource = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ الاسئله للعب مره اخرى'
-Dev_Abs(msg.chat_id_, msg.id_, 1,EngineerSource, 1, 'md')
+if text == DevAbs:get(Engineer..'Abs:GameNum8'..msg.chat_id_) then
+if not DevAbs:get(Engineer..'Abs:Games:Ids'..msg.chat_id_) then 
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+DevAbs:del(Engineer..'Abs:GameNum8'..msg.chat_id_)
+Engineer_dev = '⌁︙مبروك لقد ربحت في اللعبه \n⌁︙ارسل ↫ الاسئله للعب مره اخرى'
+Dev_Abs(msg.chat_id_, msg.id_, 1,Engineer_dev, 1, 'md')
 end
-DevAbs:set(Engineer2..'Abs:Games:Ids'..msg.chat_id_,true)
+DevAbs:set(Engineer..'Abs:Games:Ids'..msg.chat_id_,true)
 end  
---     Source Engineer2     --
-if DevAbs:get(Engineer2.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_) then  
+--     Source Engineer     --
+if DevAbs:get(Engineer.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_) then  
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 20 then
 Dev_Abs(msg.chat_id_, msg.id_, 1,"⌁︙عذرا لا يمكنك تخمين عدد اكبر من الـ20 خمن رقم ما بين الـ1 والـ20", 1, 'md')
 return false  end 
-local GETNUM = DevAbs:get(Engineer2.."GAMES:NUM"..msg.chat_id_)
+local GETNUM = DevAbs:get(Engineer.."GAMES:NUM"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
-DevAbs:del(Engineer2..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
-DevAbs:del(Engineer2.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
-DevAbs:incrby(Engineer2..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
+DevAbs:del(Engineer..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
+DevAbs:del(Engineer.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
+DevAbs:incrby(Engineer..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙*التخمين الصحيح هو* ↫ '..NUM..'\n⌁︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
-DevAbs:incrby(Engineer2..'Set:Num'..msg.chat_id_..msg.sender_user_id_,1)
-if tonumber(DevAbs:get(Engineer2..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
-DevAbs:del(Engineer2..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
-DevAbs:del(Engineer2.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
+DevAbs:incrby(Engineer..'Set:Num'..msg.chat_id_..msg.sender_user_id_,1)
+if tonumber(DevAbs:get(Engineer..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
+DevAbs:del(Engineer..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
+DevAbs:del(Engineer.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙*التخمين الصحيح هو* ↫ '..GETNUM..'\n⌁︙*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
 else
-if tonumber(DevAbs:get(Engineer2..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 1 then
+if tonumber(DevAbs:get(Engineer..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 1 then
 SetNum = 'محاولتان فقط'
-elseif tonumber(DevAbs:get(Engineer2..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 2 then
+elseif tonumber(DevAbs:get(Engineer..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 2 then
 SetNum = 'محاوله واحده فقط'
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙لقد خمنت الرقم الخطا وتبقى لديك '..SetNum..' ارسل رقم تخمنه مره اخرى للفوز', 1, 'md')
@@ -3902,38 +3901,38 @@ end
 end
 end
 end
-if text == 'خمن' and ChCheck(msg) or text == 'تخمين' and ChCheck(msg) then   
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+if text == 'خمن' and ChCheck(msg) or text == 'تخمين' and ChCheck(msg) or text == '↫ تخمين ᥀' and ChCheck(msg) then   
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,20)
-DevAbs:set(Engineer2.."GAMES:NUM"..msg.chat_id_,Num) 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙اهلا بك عزيزي في لعبة التخمين ↫ ⤈\n ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n⌁︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
-DevAbs:setex(Engineer2.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_, 100, true)  
+DevAbs:set(Engineer.."GAMES:NUM"..msg.chat_id_,Num) 
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙اهلا بك عزيزي في لعبة التخمين ↫ ⤈\n ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌁︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n⌁︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
+DevAbs:setex(Engineer.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_, 100, true)  
 return false  
 end
 end
---     Source Engineer2     --
-if text == 'روليت' then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
-DevAbs:del(Engineer2.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
-DevAbs:del(Engineer2..'Abs:ListRolet'..msg.chat_id_)  
-DevAbs:setex(Engineer2.."Abs:StartRolet"..msg.chat_id_..msg.sender_user_id_,3600,true)  
+--     Source Engineer     --
+if text == 'روليت' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
+DevAbs:del(Engineer.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
+DevAbs:del(Engineer..'Abs:ListRolet'..msg.chat_id_)  
+DevAbs:setex(Engineer.."Abs:StartRolet"..msg.chat_id_..msg.sender_user_id_,3600,true)  
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙حسنا لنلعب , ارسل عدد اللاعبين للروليت .', 1, 'md')
 return false  
 end
 end
-if text and text:match("^(%d+)$") and DevAbs:get(Engineer2.."Abs:StartRolet"..msg.chat_id_..msg.sender_user_id_) then
+if text and text:match("^(%d+)$") and DevAbs:get(Engineer.."Abs:StartRolet"..msg.chat_id_..msg.sender_user_id_) then
 if text == "1" then
 Text = "⌁︙لا استطيع بدء اللعبه بلاعب واحد فقط"
 else
-DevAbs:set(Engineer2.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_,text)  
+DevAbs:set(Engineer.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_,text)  
 Text = '⌁︙تم بدء تسجيل اللسته يرجى ارسال المعرفات \n⌁︙الفائز يحصل على 5 نقاط عدد المطلوبين ↫ '..text..' لاعب'
 end
-DevAbs:del(Engineer2.."Abs:StartRolet"..msg.chat_id_..msg.sender_user_id_)
+DevAbs:del(Engineer.."Abs:StartRolet"..msg.chat_id_..msg.sender_user_id_)
 send(msg.chat_id_,msg.id_,Text)
 return false
 end
-if text and text:match('^(@[%a%d_]+)$') and DevAbs:get(Engineer2.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) then 
-if DevAbs:sismember(Engineer2..'Abs:ListRolet'..msg.chat_id_,text) then
+if text and text:match('^(@[%a%d_]+)$') and DevAbs:get(Engineer.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) then 
+if DevAbs:sismember(Engineer..'Abs:ListRolet'..msg.chat_id_,text) then
 send(msg.chat_id_,msg.id_,'⌁︙المعرف ↫ ['..text..'] موجود اساسا')
 return false
 end
@@ -3942,13 +3941,13 @@ if res and res.message_ and res.message_ == "USERNAME_NOT_OCCUPIED" then
 Dev_Abs(msg.chat_id_, msg.id_, 1,'⌁︙المعرف غير صحيح يرجى ارسال معرف صحيح', 1, 'md')
 return false 
 end
-DevAbs:sadd(Engineer2..'Abs:ListRolet'..msg.chat_id_,text)
-local CountAdd = DevAbs:get(Engineer2.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_)
-local CountAll = DevAbs:scard(Engineer2..'Abs:ListRolet'..msg.chat_id_)
+DevAbs:sadd(Engineer..'Abs:ListRolet'..msg.chat_id_,text)
+local CountAdd = DevAbs:get(Engineer.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_)
+local CountAll = DevAbs:scard(Engineer..'Abs:ListRolet'..msg.chat_id_)
 local CountUser = CountAdd - CountAll
 if tonumber(CountAll) == tonumber(CountAdd) then 
-DevAbs:del(Engineer2.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
-DevAbs:setex(Engineer2.."Abs:WittingStartRolet"..msg.chat_id_..msg.sender_user_id_,1400,true) 
+DevAbs:del(Engineer.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
+DevAbs:setex(Engineer.."Abs:WittingStartRolet"..msg.chat_id_..msg.sender_user_id_,1400,true) 
 local Text = "⌁︙تم ادخال المعرف ↫ ["..text.."]\n⌁︙وتم اكتمال العدد الكلي هل انت مستعد ؟"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/YesRolet"},{text="لا",callback_data="/NoRolet"}},{{text="اللاعبين",callback_data="/ListRolet"}}} 
@@ -3962,25 +3961,25 @@ Msg_id = msg.id_/2097152/0.5
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil) 
 end
---     Source Engineer2     --
-if text == 'كت تويت' and ChCheck(msg) or text == 'كت' and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
-local EngineerSource = {
-'آخر مرة زرت مدينة الملاهي؟','آخر مرة أكلت أكلتك المفضّلة؟','الوضع الحالي؟\n‏1. سهران\n‏2. ضايج\n‏3. أتأمل','آخر شيء ضاع منك؟','كلمة أخيرة لشاغل البال؟','طريقتك المعتادة في التخلّص من الطاقة السلبية؟','شهر من أشهر العام له ذكرى جميلة معك؟','كلمة غريبة من لهجتك ومعناها؟🤓','‏- شيء سمعته عالق في ذهنك هاليومين؟','متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟','‏- أبرز صفة حسنة في صديقك المقرب؟','هل تشعر أن هنالك مَن يُحبك؟','اذا اكتشفت أن أعز أصدقائك يضمر لك السوء، موقفك الصريح؟','أجمل شيء حصل معك خلال هاليوم؟','صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔','كلمة لشخص غالي اشتقت إليه؟💕','آخر خبر سعيد، متى وصلك؟','أنا آسف على ....؟','أوصف نفسك بكلمة؟','صريح، مشتاق؟','‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟','‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭','‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤','‏- تخيّل شيء قد يحدث في المستقبل؟','‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚','شخص أو صاحب عوضك ونساك مُر الحياة ما اسمه ؟','| اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.','كم مره تسبح باليوم','نسبة النعاس عندك حاليًا؟','لو فقط مسموح شخص واحد تتابعه فالسناب مين بيكون ؟','يهمك ملابسك تكون ماركة ؟','وش الشيء الي تطلع حرتك فيه و زعلت ؟','عندك أخوان او خوات من الرضاعة؟','عندك معجبين ولا محد درا عنك؟',
+--     Source Engineer     --
+if text == 'كت تويت' and ChCheck(msg) or text == 'كت' and ChCheck(msg) or text == 'تويت' and ChCheck(msg) or text == '↫ كت ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
+local Engineer_dev = {
+'آخر مرة زرت مدينة الملاهي؟','آخر مرة أكلت أكلتك المفضّلة؟','الوضع الحالي؟\n‏1. سهران\n‏2. ضايج\n‏3. أتأمل','آخر شيء ضاع منك؟','كلمة أخيرة لشاغل البال؟','طريقتك المعتادة في التخلّص من الطاقة السلبية؟','شهر من أشهر العام له ذكرى جميلة معك؟','كلمة غريبة من لهجتك ومعناها؟🤓','‏- شيء سمعته عالق في ذهنك هاليومين؟','متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟','‏- أبرز صفة حسنة في صديقك المقرب؟','هل تشعر أن هنالك مَن يُحبك؟','اذا اكتشفت أن أعز أصدقائك يضمر لك السوء، موقفك الصريح؟','أجمل شيء حصل معك خلال هاليوم؟','صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔','كلمة لشخص غالي اشتقت إليه؟💕','آخر خبر سعيد، متى وصلك؟','أنا آسف على ....؟','أوصف نفسك بكلمة؟','صريح، مشتاق؟','‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟','‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭','‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤','‏- تخيّل شيء قد يحدث في المستقبل؟','‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚','شخص أو صاحب عوضك ونساك مُر الحياة ما اسمه ؟','| اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.','كم مره تسبح باليوم','نسبة النعاس عندك حاليًا؟','لو فقط مسموح شخص واحد تتابعه فالسناب مين بيكون ؟','يهمك ملابسك تكون ماركة ؟','وش الشيء الي تطلع حرتك فيه و زعلت ؟','عندك أخوان او خوات من الرضاعة؟','عندك معجبين ولا محد درا عنك؟','أصعب صفة قد تتواجد في الرجل .؟','كم المده الي تخليك توقع بحب الشخص؟.','تحس انك مستعد للقاء الله ولا باقي.؟','متصالح مع نفسك؟.','يسكر على أصبعك الباب ولا تعض لسانك  بالغلط؟!','عندك غمازات؟.','‏ألوانك المفضّلة؟','ردة فعلك لما تنظلم من شخص ؟','وش الحب بنظرك؟','أكثر شيء تقدره في الصداقات؟','‏لوخيروك ⁞ الاكل لو النت ؟!','عاجبك وجودك في التلي ولا تتمنى تحذفة.؟','افضل هديه ممكن تناسبك؟','شعورك الحالي في جملة؟','أنا حزين جداً أجعلني أبتسم.؟','بماذا يتعافى المرء؟','تاك لشخص نفسيه؟','شاركنا بيت شعري حزين على ذوقك.؟','اغنية عندك بيها ذكريات؟','اشياء تفتخر انك م سويتها ؟','الصراحة وقاحة ولا صدق تعامل.؟','ايهم اصدق نظرة العين او نبرة الصوت ؟','‏قلّة المال لدى الرجل في هذا الزمن يعتبرها العديد كانها عيب، مع أم ضد؟','إيهما تُفضل حُب ناجح أم صداقة دائمة.؟','على نياتكُم تُرزقون تاك لشخص ينطبق علية هذا الشيء.؟','اكثر كلمة ترفع ضغطك ؟','من أصحاب الماضي والحنين ولا الصفحات المطوية.؟','من أصحاب النسيان او التجاوز رغم الذكرى.؟','غزل بلهجتك ؟','مصروفك كم؟.','للحتيت ⁞ ماذا تفضّلين أن تكون مهنة شريك حياتك المستقبلي.؟','يومك ضاع على؟','ما الذي اسعدك اليوم .؟','كيف تتعامل مع الشخص المُتطفل ( الفضولي ) ؟','أصعب صفة قد تتواجد في المرأة.؟','مع أو ضد لو كان خيراً لبقئ.؟','نصيحة لكل شخص يذكر أحد بغيابة بالسوء.؟','كل شيء يهون الا ؟','هل أنت من النوع الذي يواجه المشاكل أو من النوع الذي يهرب ؟','كلمه لشخص خانك!؟.','تحب تحتفظ بالذكريات ؟','شاركنا أقوى بيت شِعر من تأليفك؟','‏اسرع شيء يحسّن من مزاجك؟','كلمتك التسليكيه ؟','كم ساعات نومك؟.','عندك فوبيا او خوف شديد من شيء معين ؟','موهبة تفوز بمدح الناس لك.؟','قدوتك من الأجيال السابقة؟','شخص تتمنئ له الموت؟.','عادةً تُحب النقاش الطويل أم تحب الاختصار؟','تاك لشخص نيته زباله🌚؟','صوتك حلو ؟ .','كلمتين تكررها دايم؟!','افضل روايه قريتيها؟.','متى حدث التغيير الكبير والملحوظ في شخصيتك؟','أكثر اكلهه تحبها؟.','‏كلما ازدادت ثقافة المرء ازداد بؤسه','تتفق.؟','اغبى كذبه صدقتها بطفولتك؟.','كم المده الي تخليك توقع بحب الشخص؟.','تسامح شخص وجع قلبك ؟.','ردة فعلك لما تنظلم من شخص ؟','شيء يعدل نفسيتك بثواني.؟','‏تتوقع الإنسان يحس بقرب موته؟','وقت حزنك تلجأ لمن يخفف عنك.؟','‏أكثر شيء شخصي ضاع منك؟','تزعلك الدنيا ويرضيك ؟','ما الذي يشغل بالك في الفترة الحالية؟','نهارك يصير أجمل بوجود ..؟','حسيت انك ظلمت شخص.؟','صفة يطلقها عليك من حولك بكثرة؟','‏يوم لا يمكنك نسيانه؟','أكثر اكلهه تحبها؟.','اخر كلمة قالها لك حبيبك؟.','من الشخص الاقرب لقلبك؟.','كم المده الي تخليك توقع بحب الشخص؟.','ماهي الهدية التي تتمنى أن تنتظرك يومًا أمام باب منزلك؟','‏اسم او تاك لشخص لا ترتاح في يومك إلا إذا حاجيته؟','صديق أمك ولا أبوك. ؟','لماذا الأشياء التي نريدها بشغف تأتي متأخرة؟','‏تقبل بالعودة لشخص كسر قلبك مرتين؟','افضل هديه ممكن تناسبك؟','كلمة غريبة ومعناها؟','اذا اشتقت تكابر ولا تبادر ؟.','بامكانك تنزع شعور من قلبك للابد ، ايش هو؟.','لو بتغير اسمك ايش بيكون الجديد ؟','‏شخصية لا تستطيع تقبلها؟','ما هي طريقتك في الحصول على الراحة النفسية؟','‏ايموجي يوصف مزاجك حاليًا بدقة؟','تاريخ ميلادك؟','كيف تحد الدولة من الفقر المُتزايد.؟','‏شي مستحيل يتغير فيك؟','لو اخذوك لمستشفى المخابيل كيف تثبت انت صاحي؟','إيموجي يعبّر عن مزاجك الحالي؟','وقت حزنك تلجأ لمن يخفف عنك.؟','اعترف باي حاجه ؟','شاركني آخر صورة جميلة من كاميرا هاتفك.؟','متصالح مع نفسك؟.','لو عندك امنيه وبتحقق وش هي؟.','هل انت شخص مادي.؟','أخر اتصال جاك من مين ؟','تاك لصديقك المُقرب؟.','تحب العلاقات العاطفيه ولا الصداقه؟.','العين الي تستصغرك........؟','تجامل الناس ولا اللي بقلبك على لسانك؟','وقت حزنك تلجأ لمن يخفف عنك.؟','اكثر المتابعين عندك باي برنامج؟','صفه تتمناها بشريك حياتك؟.','من اصدق في الحب الولد ولا البنت؟.','يرد عليك متأخر على رسالة مهمة وبكل برود، موقفك؟','كلمة لشخص بعيد؟','رحتي لعرس وأكتشفتي العريس حبيبك شنو ردة فعلك.؟','تسامح شخص وجع قلبك ؟.','احقر موقف صار لك؟.','ماذا لو كانت مشاعر البشر مرئية ؟','وين نلقى السعاده برايك؟','قد تخيلت شي في بالك وصار ؟','صفة يطلقها عليك الشخص المفضّل؟','اخر خيانه؟.','تحب تحتفظ بالذكريات ؟','لو بتغير اسمك ايش بيكون الجديد ؟','الاعتذار أخلاق ولا ضعف.؟','هل أنت من النوع الذي يواجه المشاكل أو من النوع الذي يهرب ؟','‏ تكره أحد من قلبك ؟','تاك لشخص وكوله اعترف لك؟','مع أو ضد لو كان خيراً لبقئ.؟','‏هل لديك شخص لا تخفي عنه شيئًا؟','اغنيه تأثر بيك؟','المطوعة والعاقلة من شلتك.؟','مواصفات امير/ة احلامك؟.','‏كلمة لصديقك البعيد؟','تتابع انمي؟ إذا نعم ما أفضل انمي شاهدته؟','قرارتك راضي عنها ام لا ؟','تسامح شخص سبب في بكائك.؟','لو حصل واشتريت جزيرة، ماذا ستختار اسمًا لها.؟','اغنيتك المفضلة؟.','شاركنا اقوئ نكتة عندك.؟','ماذا لو عاد مُشتاقاً.؟','مسلسل كرتوني له ذكريات جميلة عندك؟','أخر اتصال جاك من مين ؟','حيوانك المفضل؟','اول ولد لك شنو رح تسميه ؟','سبب الرحيل.؟','قولها بلهجتك « لا أملك المال ».؟','نهارك يصير أجمل بوجود ..؟','‏لو خيروك، الزواج بمن تُحب او تاخذ مليون دولار؟','تاك لشخص سوالفه حلوه ؟','تصرف لا يُمكن أن تتحمله.؟','ماهي الاطباع فيك التي تحاول اخفائها عن الناس؟.','شيء عندك اهم من الناس؟','قد تخيلت شي في بالك وصار ؟','تمحي العشرة الطيبة عشان موقف ماعجبك أو سوء فهم.؟','جربت شعور احد يحبك بس انت متكدر تحبه؟','بنفسك تبوس شخص بهاي الحظه؟','إذا كانت الصراحة ستبعد عنك من تحب هل تمتلك الشجاعة للمصارحة ام لا .؟','أكمل الدعاء بما شئت ‏اللهم أرزقني ..؟','الصق اخر شيء نسخته .؟','‏تفضل جولة في الغابة أم جولة بحرية؟','‏تاك لشخص لديك لا تخفي عنه شي؟','كلمة غريبة ومعناها؟','‏اوقات لا تحب ان يكلمك فيها احد؟','تملك وسواس من شيء معين ؟','اشمر مقطع من اغنيه متطلع منراسك؟','هل تتأثرين بالكلام الرومانسي من الشباب؟','ما اول شيء يلفت انتباهك في الرجل؟','ماذا تفعلين اذا تعرضتِ للتحرش من قبل شخص ما..؟','اذا كنت شخصاً غني هل توافق على الزواج من فتاة فقيرة..؟','ما هو أكثر شئ لا تستطيع تحمله..؟','ما هي نقاط الضعف في شخصيتك..؟','هل توافق أن زوجتك تدفع الحساب في إحدي المطاعم وأنت موجود؟','ماذا تفعل لو أكتشفت ان زوجتك على علاقة بصديقك؟','ما هي أكثر صفة تكرهها في زوجتك..؟','اذا كان لديك فرصة للخروج مع من سوف تخرج ربعك او زوجتك..؟','ماذا تفعل عندما تري دموع زوجتك..؟','إلى أي الرجال تُريدين أن يكون انتماؤك؟','كم مرة خُدعت في أشخاصٍ، وثقتِ فيهم ثقةً عمياء؟','هل ما زال أصدقاء الطفولة أصدقاءً لك حتى الآن؟','هل ترغبين في أن يكون خطيبك وسيمًا؟','كم مرةٍ فعلت شيئًا لا ترغبين في الإفصاح عنه؟','هل استطعت أن تُحققي آمالك العلمية والعاطفية؟','أكثر شئ ندمت على فعله..؟','هل تشعرين أنك فتاة محظوظة..؟','هل علاقة الحب التي كانت في صغرك، مازالت مستمرة؟','ما هو أكثر شئ يفرحك في هذه الحياة..؟','كم مرة أردت شراء ملابس لأنها جميلة ولكنها لا تناسبك..؟','كم عدد المرات التي قمت فيها بإستبدال شئ اشتريته ولم يعجبك بعد ذلك.؟','كم مرة قمت بكسر الرجيم من أجل تناول طعامك المفضل..؟','هل تعرضت للظلم يوماً ما وعلى يد من..؟','هل كذبت على والديك من قبل..؟','هل خرجتي مع شخص تعرفتي عليه من خلال التليكرام من قبل..؟','هل لو تقدم شخص لاختك من أجل خطبتها وقامت برفضه تقبلين به..؟','لمن تقولين لا أستطيع العيش بدونك..؟','كم عدد المرات التي تعرضتِ فيها إلى أزمة نفسية وأردتِ الصراخ بأعلى صوتك..؟','ماذا تقول للبحر؟','أصعب صفة قد تتواجد في رجل؟','ما أجمل الحياة بدون ...؟','لماذا لم تتم خطبتك حتى الآن..؟','نسبة رضاك عن الأشخاص من حولك هالفترة ؟','ما السيء في هذه الحياة ؟','الفلوس او الحب ؟','أجمل شيء حصل معك خلال هذا الاسبوع ؟','سؤال ينرفزك ؟','كم في حسابك البنكي ؟','شي عندك اهم من الناس ؟','اول ولد او بنت الك شنو تسمي ؟','تفضّل النقاش الطويل او تحب الاختصار ؟','عادي تتزوج او تتزوجين من خارج العشيره ؟','كم مره حبيت ؟','تبادل الكراهية بالكراهية؟ ولا تحرجه بالطيب ؟','قلبي على قلبك مهما صار لمنو تكولها ؟','اكثر المتابعين عندك باي برنامج ؟','نسبة النعاس عندك حاليًا ؟','نسبه الندم عندك للي وثقت بيهم ؟','اول شخص تعرفت عليه بالتليكرام بعده موجود ؟','اذا فديوم شخص ضلمك شنو موقفك ؟','افضل عمر للزواج برئيك ؟','انت من النوع الي دائما ينغدر من اقرب الناس اله ؟','ماهو حيوانك المفضل ؟','تاريخ ميلادك ؟','لونك المفضل ؟','انت من النوع العاطفي والي ميكدر يكتم البداخله ؟','اذا فديوم شخص خانك ويريد يرجعلك تقبل ؟','شي بالحياه مخليك عايش لحد الان ؟','تحب النوم لو الشغل ؟','افضل مكان رحت عليه ؟','اختصر الماضي بكلمه وحده ؟','هل سبق وكنت مصر على أمر ما ومن ثم اكتشفت أنك كنت على خطأ ؟','اكثر كلمة ترفع ضغطك ؟','مع او ضد سب البنت للدفاع عن نفسها ؟','يهمك ظن الناس بيك لو لا؟','عبّر عن مودك بصوره ؟','اغلب وقتك ضايع في ؟','يوم متكدر تنساه ؟','تحس انك محظوظ بالاشخاص الي حولك ؟','تستغل وقت فراغك بشنو ؟','مع او ضد مقولة محد يدوم ل احد ؟','لو اخذوك مستشفى المجانين كيف تثبت لهم انك صاحي ؟','مغني تلاحظ أن صوته يعجب الجميع إلا أنت ؟','اخر خيانه ؟','تصرف ماتتحمله ؟','هل يمكنك الكذب والاستمرار بارتكاب الأخطاء كمحاولة منك لعدم الكشف أنك مخطئ ؟','الصق اخر شي نسخته ؟','عمرك انتقمت من أحد ؟','هل وصلك رسالة غير متوقعة من شخص وأثرت فيك ؟','‏-لو امتلكت العصا السحرية ليوم واحد ماذا ستفعل ؟','جابو طاري شخص تكره عندك تشاركهم ولا تمنعهم ؟','أمنية كنت تتمناها وحققتها ؟','هل التعود على شخص والتحدث معه بشكل يومي يعتبر نوع من أنواع الحب ؟','نسبة جمال صوتك ؟','صفة يطلقها عليك الشخص المفضل ؟','شنو هدفك بالمستقبل القريب ؟','تحب القرائه ؟','كليه تتمنى تنقبل بيها ؟',
 'أطول مدة قضيتها بعيد عن أهلك ؟','لو يجي عيد ميلادك تتوقع يجيك هدية؟','يبان عليك الحزن من " صوتك - ملامحك','وين تشوف نفسك بعد سنتين؟','وش يقولون لك لما تغني ؟','عندك حس فكاهي ولا نفسية؟','كيف تتصرف مع الشخص الفضولي ؟','كيف هي أحوال قلبك؟','حاجة تشوف نفسك مبدع فيها ؟','متى حبيت؟','شيء كل م تذكرته تبتسم ...','العلاقه السريه دايماً تكون حلوه؟','صوت مغني م تحبه','لو يجي عيد ميلادك تتوقع يجيك هدية؟','اذا احد سألك عن شيء م تعرفه تقول م اعرف ولا تتفلسف ؟','مع او ضد : النوم افضل حل لـ مشاكل الحياة؟','مساحة فارغة (..............) اكتب اي شيء تبين','اغرب اسم مر عليك ؟','عمرك كلمت فويس احد غير جنسك؟','اذا غلطت وعرفت انك غلطان تحب تعترف ولا تجحد؟','لو عندك فلوس وش السيارة اللي بتشتريها؟','وش اغبى شيء سويته ؟','شيء من صغرك ماتغير فيك؟','وش نوع الأفلام اللي تحب تتابعه؟','وش نوع الأفلام اللي تحب تتابعه؟','تجامل احد على حساب مصلحتك ؟','تتقبل النصيحة من اي شخص؟','كلمه ماسكه معك الفترة هذي ؟','متى لازم تقول لا ؟','اكثر شيء تحس انه مات ف مجتمعنا؟','تؤمن ان في "حُب من أول نظرة" ولا لا ؟.','تؤمن ان في "حُب من أول نظرة" ولا لا ؟.','هل تعتقد أن هنالك من يراقبك بشغف؟','اشياء اذا سويتها لشخص تدل على انك تحبه كثير ؟','اشياء صعب تتقبلها بسرعه ؟','اقتباس لطيف؟','أكثر جملة أثرت بك في حياتك؟','عندك فوبيا من شيء ؟.',
 'اكثر لونين تحبهم مع بعض؟','أجمل بيت شعر سمعته ...','سبق وراودك شعور أنك لم تعد تعرف نفسك؟','تتوقع فيه احد حاقد عليك ويكرهك ؟','أجمل سنة ميلادية مرت عليك ؟','لو فزعت/ي لصديق/ه وقالك مالك دخل وش بتسوي/ين؟','وش تحس انك تحتاج الفترة هاذي ؟','يومك ضاع على؟','@منشن .. شخص تخاف منه اذا عصب ...','فيلم عالق في ذهنك لا تنساه مِن روعته؟','تختار أن تكون غبي أو قبيح؟','الفلوس او الحب ؟','أجمل بلد في قارة آسيا بنظرك؟','ما الذي يشغل بالك في الفترة الحالية؟','احقر الناس هو من ...','وين نلقى السعاده برايك؟','اشياء تفتخر انك م سويتها ؟','تزعلك الدنيا ويرضيك ؟','وش الحب بنظرك؟','افضل هديه ممكن تناسبك؟','كم في حسابك البنكي ؟','كلمة لشخص أسعدك رغم حزنك في يومٍ من الأيام ؟','عمرك انتقمت من أحد ؟!','ما السيء في هذه الحياة ؟','غنية عندك معاها ذكريات🎵🎻','/','أفضل صفة تحبه بنفسك؟','اكثر وقت تحب تنام فيه ...','أطول مدة نمت فيها كم ساعة؟','أصعب قرار ممكن تتخذه ؟','أفضل صفة تحبه بنفسك؟','اكثر وقت تحب تنام فيه ...','أنت محبوب بين الناس؟ ولاكريه؟','إحساسك في هاللحظة؟','اخر شيء اكلته ؟','تشوف الغيره انانيه او حب؟','اذكر موقف ماتنساه بعمرك؟','اكثر مشاكلك بسبب ؟','اول ماتصحى من النوم مين تكلمه؟','آخر مرة ضحكت من كل قلبك؟','لو الجنسية حسب ملامحك وش بتكون جنسيتك؟','اكثر شيء يرفع ضغطك','اذكر موقف ماتنساه بعمرك؟','لو قالوا لك  تناول صنف واحد فقط من الطعام لمدة شهر .',
-'كيف تشوف الجيل ذا؟','ردة فعلك لو مزح معك شخص م تعرفه ؟','احقر الناس هو من ...','تحب ابوك ولا امك','آخر فيلم مسلسل والتقييم🎥؟','أقبح القبحين في العلاقة: الغدر أو الإهمال🤷🏼؟','كلمة لأقرب شخص لقلبك🤍؟','حط@منشن لشخص وقوله "حركتك مالها داعي"😼!','اذا جاك خبر مفرح اول واحد تعلمه فيه مين💃🏽؟','طبع يمكن يخليك تكره شخص حتى لو كنت تُحبه🙅🏻‍♀️؟','افضل ايام الاسبوع عندك🔖؟','يقولون ان الحياة دروس ، ماهو أقوى درس تعلمته من الحياة🏙؟','تاريخ لن تنساه📅؟','تحب الصيف والا الشتاء❄️☀️؟','شخص تحب تستفزه😈؟','شنو ينادونك وانت صغير (عيارتك)👼🏻؟','عقل يفهمك/ج ولا قلب يحبك/ج❤️؟','اول سفره لك وين رح تكون✈️؟','كم عدد اللي معطيهم بلوك👹؟','نوعية من الأشخاص تتجنبهم في حياتك❌؟','شاركنا صورة او فيديو من تصويرك؟📸','كم من عشره تعطي حظك📩؟','اكثر برنامج تواصل اجتماعي تحبه😎؟','من اي دوله انت🌍؟','اكثر دوله ودك تسافر لها🏞؟','مقولة "نكبر وننسى" هل تؤمن بصحتها🧓🏼؟','تعتقد فيه أحد يراقبك👩🏼‍💻؟','لو بيدك تغير الزمن ، تقدمه ولا ترجعه🕰؟','مشروبك المفضل🍹؟','‏قم بلصق آخر اقتباس نسخته؟💭','كم وزنك/ج طولك/ج؟🌚','كم كان عمرك/ج قبل ٨ سنين😈؟','دوله ندمت انك سافرت لها😁؟','لو قالو لك ٣ أمنيات راح تتحقق عالسريع شنو تكون🧞‍♀️؟','‏- نسبة احتياجك للعزلة من 10📊؟','شخص تحبه حظرك بدون سبب واضح، ردة فعلك🧐؟','مبدأ في الحياة تعتمد عليه دائما🕯؟'
+'كيف تشوف الجيل ذا؟','ردة فعلك لو مزح معك شخص م تعرفه ؟','احقر الناس هو من ...','تحب ابوك ولا امك','آخر فيلم مسلسل والتقييم🎥؟','أقبح القبحين في العلاقة: الغدر أو الإهمال🤷🏼؟','كلمة لأقرب شخص لقلبك🤍؟','حط@منشن لشخص وقوله "حركتك مالها داعي"😼!','اذا جاك خبر مفرح اول واحد تعلمه فيه مين💃🏽؟','طبع يمكن يخليك تكره شخص حتى لو كنت تُحبه🙅🏻‍♀️؟','افضل ايام الاسبوع عندك🔖؟','يقولون ان الحياة دروس ، ماهو أقوى درس تعلمته من الحياة🏙؟','تاريخ لن تنساه📅؟','تحب الصيف والا الشتاء❄️☀️؟','شخص تحب تستفزه😈؟','شنو ينادونك وانت صغير (عيارتك)👼🏻؟','عقل يفهمك/ج ولا قلب يحبك/ج❤️؟','اول سفره لك وين رح تكون✈️؟','كم عدد اللي معطيهم بلوك👹؟','نوعية من الأشخاص تتجنبهم في حياتك❌؟','شاركنا صورة او فيديو من تصويرك؟📸','كم من عشره تعطي حظك📩؟','اكثر برنامج تواصل اجتماعي تحبه😎؟','من اي دوله انت🌍؟','اكثر دوله ودك تسافر لها🏞؟','مقولة "نكبر وننسى" هل تؤمن بصحتها🧓🏼؟','تعتقد فيه أحد يراقبك👩🏼‍💻؟','لو بيدك تغير الزمن ، تقدمه ولا ترجعه🕰؟','مشروبك المفضل🍹؟','‏قم بلصق آخر اقتباس نسخته؟💭','كم وزنك/ج طولك/ج؟🌚','كم كان عمرك/ج قبل ٨ سنين😈؟','دوله ندمت انك سافرت لها😁؟','لو قالو لك ٣ أمنيات راح تتحقق عالسريع شنو تكون🧞‍♀️؟','‏- نسبة احتياجك للعزلة من 10📊؟','شخص تحبه حظرك بدون سبب واضح، ردة فعلك🧐؟','مبدأ في الحياة تعتمد عليه دائما🕯؟',
 }  
-Dev_Abs(msg.chat_id_, msg.id_, 1, ''..EngineerSource[math.random(#EngineerSource)]..'' , 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, ''..Engineer_dev[math.random(#Engineer_dev)]..'' , 1, 'md')  
 return false
 end
 end
---     Source Engineer2     --
-if text and (text == 'الالعاب' or text == 'العاب' or text == 'اللعبه') and ChCheck(msg) then
-if not DevAbs:get(Engineer2..'Abs:Lock:Games'..msg.chat_id_) then
+--     Source Engineer     --
+if text == 'الالعاب' and ChCheck(msg) or text == 'العاب' and ChCheck(msg) or text == 'اللعبه' and ChCheck(msg) or text == '↫ الالعاب ᥀' and ChCheck(msg) then
+if not DevAbs:get(Engineer..'Abs:Lock:Games'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1,[[
 ⌁︙قائمة العاب المجموعه ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ⌁︙لعبة التخمين ↫ خمن
 ⌁︙لعبة الامثله ↫ امثله
 ⌁︙لعبة العكس ↫ العكس
@@ -3995,9 +3994,9 @@ Dev_Abs(msg.chat_id_, msg.id_, 1,[[
 ⌁︙لعبة المحيبس ↫ المحيبس
 ⌁︙لعبة الرياضيات ↫ رياضيات
 ⌁︙لعبة الانكليزيه ↫ انكليزيه
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ⌁︙نقاطي • بيع نقاطي
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ⌁︙[Source Channel](https://t.me/ba8lawa)
 ]], 1, 'md')
 else
@@ -4318,21 +4317,15 @@ if text == "ايدي المجموعه" and ChCheck(msg) then Dev_Abs(msg.chat_id
 if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' or text == 'حذف سحكاتي' or text == 'حذف تعديلاتي' then DevAbs:del(Engineer2..'Abs:EditMsg'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم حذف جميع تعديلاتك بنجاح' , 1, 'md') end
 if text == 'مسح جهاتي' or text == 'مسح اضافاتي' or text == 'حذف جهاتي' or text == 'حذف اضافاتي' then DevAbs:del(Engineer2..'Abs:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم حذف جميع جهاتك المضافه' , 1, 'md') end
 --     Source Engineer2     --
-if text == "المطور" then 
-local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAbs:get(Engineer2.."Abs:ChId"))
-local GetInfo = JSON.decode(Check)
-local DevCh1 = GetInfo.result.username
-local DevText = DevAbs:get(Engineer2.."DevText")
-if DevAbs:get(Engineer2.."Abs:ChId") then DevCh = '\n⌁︙*Dev Ch* ↬ [@'..DevCh1..']' else DevCh = '' end
-tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
-if dp.username_ ~= false then DevUser = '@'..dp.username_ else DevUser = dp.first_name_ end
-if DevText then
-Dev_Abs(msg.chat_id_, msg.id_, 1, DevText, 1, "md")
-else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙*Dev User* ↬ ['..DevUser..']\n⌁︙*Dev Id* ↬ '..DevId..DevCh, 1, "md")
-end
+if text == 'المطور' or text == 'مطور' then
+tdcli_function({ID="GetUser",user_id_=DevId},function(arg,result)
+local msg_id = msg.id_/2097152/0.5
+Text = "*⌁︙Dev Name ↬ * ["..result.first_name_.."](T.me/"..result.username_..")\n*⌁︙Dev User ↬* [@"..result.username_.."]"
+keyboard = {} 
+keyboard.inline_keyboard = {{{text = ''..result.first_name_..' ',url="t.me/"..result.username_ or tt3at}}}
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil)
-end 
+end
 --     Source Engineer2     --
 if text and text:match('^هينه @(.*)') and ChCheck(msg) or text and text:match('^هينها @(.*)') then 
 if not DevAbs:get(Engineer2..'Abs:Lock:Stupid'..msg.chat_id_) then
